@@ -1,0 +1,33 @@
+import random
+
+# Define responses for different input patterns
+responses = {
+    "hello": ["Hi there!", "Hello!", "Hey!"],
+    "how are you": ["I'm doing well, thanks for asking!", "I'm good, how about you?"],
+    "bye": ["Goodbye!", "See you later!", "Bye!"],
+    "default": ["Sorry, I don't understand.", "Could you please rephrase that?", "I'm still learning!"]
+}
+
+# Function to generate response
+def generate_response(user_input):
+    user_input = user_input.lower()
+    for pattern, response_list in responses.items():
+        if pattern in user_input:
+            return random.choice(response_list)
+    return random.choice(responses["default"])
+
+# Main function to run the chatbot
+def main():
+    print("Welcome to the Chatbot!")
+    while True:
+        user_input = input("You: ")
+        if user_input.lower() == 'exit':
+            print("Goodbye!")
+            break
+        response = generate_response(user_input)
+        print("Bot:", response)
+
+# Run the chatbot
+if __name__ == "__main__":
+    main()
+    
